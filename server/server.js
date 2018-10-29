@@ -15,9 +15,15 @@ let io = socketIO(server);
 io.on('connection', (socket) => {
     console.log("new user connected");
 
+    io.sockets.emit('newMessage', {
+        from: "Server",
+        text: "New user connected!",
+        time: "time"
+    });
+
     socket.emit('newMessage', {
         from: "Server",
-        text: "I'll see you in hell",
+        text: "Welcome in our chat",
         time: "time"
     });
 
@@ -26,9 +32,9 @@ io.on('connection', (socket) => {
     });
 
     socket.on('createMessage', (newMessage)=>{
-
+        io.sockets.emit('newMessage', newMessage);
         console.log('send new MEssage', newMessage);
-        socket.emit('newMessage', newMessage)
+        // socket.emit('newMessage', newMessage)
     })
 
 })
