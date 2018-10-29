@@ -16,7 +16,7 @@ io.on('connection', (socket) => {
     console.log("new user connected");
 
     socket.emit('newMessage', {
-        from: "User1",
+        from: "Server",
         text: "I'll see you in hell",
         time: "time"
     });
@@ -28,7 +28,7 @@ io.on('connection', (socket) => {
     socket.on('createMessage', (newMessage)=>{
 
         console.log('send new MEssage', newMessage);
-
+        socket.emit('newMessage', newMessage)
     })
 
 })
