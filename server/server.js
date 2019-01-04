@@ -29,7 +29,7 @@ app.use(publicRoutes);
 let messageBuffer = []
 function storeMessage (message) {
     while(messageBuffer.length > 10) {
-        message.shift()
+        messageBuffer.shift()
     }
     messageBuffer.push(message);
 }
