@@ -1,11 +1,5 @@
 var socket = io();
 
-socket.on("connect", function() {
-    console.log("CONNECTed");
-
-
-});
-
 function keyPressEventListener(e) {
     var characterCode=e.keyCode || e.which;
     if(characterCode == 13){
@@ -15,16 +9,28 @@ function keyPressEventListener(e) {
     }
 }
 
-var sendMessage = function(event) {
-    
-    var text = document.querySelector('#message').value
-    document.querySelector('#message').value = ""
-    var username = document.querySelector('#username').value
-    socket.emit('createMessage', {time: Date.now(), text, from: username});
+
+var sendMessageListener = function(event) {
+    event.preventDefault(); 
+    var message = {
+        from: document.getElementById("username").value, 
+        text: document.getElementById("message").value
+    }
+    addMessageToTheScreen(message)
+    sendMessage(message)   
 }
 
-document.getElementById("send").addEventListener("click", sendMessage)
-document.getElementById("message").addEventListener("keydown", keyPressEventListener)
+function sendMessage(from, text) {
+    socket.emit('createMessage', {text, from}, (response) => {
+        console.log("delivered", response)
+    });
+}
+
+document.getElementById('message-form').addEventListener('submit', sendMessageListener)
+
+socket.on("connect", function() {
+    console.log("CONNECTed");
+});
 
 socket.on("disconnect", function() {
     console.log("DISCONNECT");
@@ -32,8 +38,12 @@ socket.on("disconnect", function() {
 
 socket.on('newMessage', function(message){
     console.log("New message: ", message);
+    addMessageToTheScreen(message);
+});
+
+function addMessageToTheScreen(message) {
     var newMessage = document.createElement("div")
     newMessage.innerHTML = `<span style="{display:block}">${message.from} :</span><p>${message.text}</p><hr />`
     document.getElementsByTagName("fieldset")[0].append(newMessage)
-});
+}
 

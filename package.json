@@ -1,7 +1,11 @@
 {
   "name": "nsock",
   "version": "1.0.0",
-  "description": "",
+  "description": "My petproject - socket chat",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:fatclient/node-socket-chat.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "mocha server/**/*.test.js",
@@ -11,15 +15,15 @@
   "engines": {
     "node": "11.0.0"
   },
-  "author": "",
+  "author": "fatclient",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3",
-    "socket.io": "^2.1.1"
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "expect": "^23.6.0",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.5"
+    "nodemon": "^1.18.9"
   }
 }
