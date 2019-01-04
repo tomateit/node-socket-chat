@@ -1,0 +1,61 @@
+@font-face {
+    font-family: Corona;
+    src: url(/fonts/CoronA.ttf);
+  }
+
+@font-face {
+    font-family: Eroded;
+    src: url(/fonts/Ordeal-Eroded-FFP.ttf);
+  }
+
+  @font-face {
+    font-family: Ubuntu;
+    src: url(/fonts/Ubuntu-R.ttf);
+  }
+
+.header-container {
+    display: flex;
+    height: 120px;
+    background-color: grey;
+    font-family: Ubuntu;
+    justify-content: space-between;
+}
+
+.header-container img {
+    max-height: 120px;
+    max-width: 120px;
+    height: auto;
+    width: auto;
+}
+
+.navigation {
+    margin-right: 40px;
+}
+
+.navigation ul{
+    list-style: none;
+}
+
+.navigation a{
+    text-decoration: none;
+    color: #ededed
+}
+
+.page-title {
+    text-align: center;
+}
+
+.page-title h1 {
+    color: white;
+    font-family: Eroded;
+}
+
+.page-title h2 {
+    font-family: Corona;
+    color: #ededed;
+}
+
+p {
+    font-family: Ubuntu;
+}
+
