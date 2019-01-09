@@ -1,0 +1,26 @@
+{{> head}}
+<body>
+{{> header}}
+
+ 
+<div class="container">
+
+<h2>Hello, this public blog page.</h2>
+
+<h3>Here I will post some stuff.</h3>
+<div class="blog-list">
+    {{#each posts}}
+        <div class="post">
+            <h3>{{this.title}}</p>
+            <p>{{this.body}}</p>
+            <a href="/blog/{{this._id}}">Go to post page</a>
+        </div>
+    {{else}}
+        <p class="empty">No posts yet</p>
+    {{/each}}
+</div>
+
+</div>
+
+
+</body>

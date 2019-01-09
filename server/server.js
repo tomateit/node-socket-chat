@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const {generateMessage} = require('./utils/message')
 
 const publicRoutes = require("./routes/publicRoutes");
+const publicBlogRoutes = require("./routes/publicBlogRoutes");
 
 const publicPath = path.join(__dirname, '../public');
 const PORT = process.env.PORT || 3000;
@@ -22,6 +23,7 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, "..","views"));
 
 app.use(publicRoutes);
+app.use(publicBlogRoutes);
 
 // Socket.IO stuff: 
 
