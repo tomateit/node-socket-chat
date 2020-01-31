@@ -5,6 +5,9 @@ Router.get('/', (req, res) => {
 
 });
 
+Router.get('/help', (req, res) => {
+    res.render('help.hbs', {style: "index", subtitle: "Help page"})
 
+});
 
 module.exports = Router;
