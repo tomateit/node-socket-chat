@@ -1,5 +1,5 @@
 {
-  "name": "nsock",
+  "name": "node-socket-chat",
   "version": "1.0.0",
   "description": "My petproject - socket chat",
   "repository": {
@@ -20,11 +20,11 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "hbs": "^4.0.1",
+    "hbs": "^4.1.0",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
-    "expect": "^23.6.0",
+    "expect": "^25.1.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.9"
   }
