@@ -7,16 +7,13 @@
 
 <h2>Hello, this is chat app, classic node.js developer pet-project.</h2>
 
-<p>To get personal features, consider signing up:</p>
-{{> signup}}
-
 
 <h3>Here you can try anonymous chat: </h3>
 <div class="chat-app">
     <div class="form-container" >
-        <span id="connection-status"></span>
-        <span id="connection-counter"></span>
-        <input type="text" name="username" id="username" placeholder="Choose a name! "></input>
+        {{!-- <span id="connection-status"></span>
+        <span id="connection-counter"></span> --}}
+        <input type="text" name="addressee" id="addressee" placeholder="Who do you want to text to"></input>
         <textarea name="message" id="message" placeholder="Enter a message..."></textarea>
         {{!-- <button id="send">Send</button> --}}
     </div>
@@ -27,6 +24,6 @@
 
 </div>
 <script src="/socket.io/socket.io.js"></script>
-<script src="/js/index.js" />
+<script src="/js/myspace.js" />
 {{> footer}}
 </body>

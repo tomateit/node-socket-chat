@@ -10,7 +10,11 @@
 		<div class="navigation">
 			<ul>
 				<li><a href="/">Home</a></li>
-				<li><a href="/profile">Profile</a></li>
+				{{#if user}}
+					<li><a href="/myspace">{{user.username}} Profile</a></li>
+				{{/if}}
+
+				
 				<li><a href="/help">Help</a></li>
 			</ul>
 		</div>
