@@ -4,10 +4,10 @@ const authenticate = (req, res, next) => {
     // if (!req.cookies.Auth) {
     //     return next()
     // }
-    res.cookie("Auth", 100100)
+    // res.cookie("Auth", 100100)
     
-    const user = User.findByToken(req.cookies.Auth);
-    req.user = user;
+    // const user = User.findByToken(req.cookies.Auth);
+    req.user = {username: req.cookies.Auth}
     return next();
 }
 
