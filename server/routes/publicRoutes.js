@@ -22,4 +22,12 @@ Router.get('/help', (req, res) => {
 
 });
 
+
+Router.post('/login', (req,res) => {
+    res.cookie("Auth", req.body.username)
+    console.log("Authentication request")
+    console.log(req.body)
+    res.redirect("/myspace")
+})
+
 module.exports = Router;
