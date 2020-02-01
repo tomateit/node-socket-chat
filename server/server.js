@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 const { mainPageChat } = require("./routes/rooms/mainpage");
+const { privateChat } = require("./routes/rooms/myspace");
 const publicRoutes = require("./routes/publicRoutes");
 
 const publicPath = path.join(__dirname, '../public');
@@ -21,6 +22,7 @@ app.set('view engine', 'hbs');
 hbs.registerPartials( path.join(__dirname,"..","views","partials"));
 // Express plugins
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser())
 // Custom routes
 app.use(publicRoutes);
@@ -33,7 +35,7 @@ let server = http.createServer(app);
 let io = socketIO(server);
 
 mainPageChat(io);
-
+privateChat(io);
 
 server.listen(PORT, () => {
     console.log(`Server is up on port ${PORT}`);
