@@ -5,7 +5,6 @@ FROM node:carbon
 # Установить зависимости приложения
 # Используется символ подстановки для копирования как 
 # package.json, так и package-lock.json,
-# работает с npm@5+
 
 COPY package*.json ./
 
@@ -15,8 +14,7 @@ RUN npm install
 # RUN npm install --only=production
 
 # Скопировать исходники приложения
-COPY server /server
-COPY public /public
+COPY . .
 
 EXPOSE 3000
 
