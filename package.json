@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git@github.com:tomateit/node-socket-chat.git"
   },
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "test": "mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'",
@@ -19,15 +19,14 @@
   "author": "Max Ermakov (maksim_ermakov@protonmail.com)",
   "license": "ISC",
   "dependencies": {
-    "cookie-parser": "^1.4.4",
-    "dotenv": "^8.2.0",
-    "express": "^4.16.4",
-    "hbs": "^4.1.0",
-    "socket.io": "^2.4.0"
+    "chokidar": "^3.3.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "nunjucks": "^3.2.3",
+    "socket.io": "^4.1.1"
   },
   "devDependencies": {
-    "expect": "^25.1.0",
-    "mocha": "^8.4.0",
-    "nodemon": "^1.18.9"
+    "eslint": "^7.26.0"
   }
 }
