@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<script src="/static/js/index.js" />
+<script src="/static/socket.io/socket.io.js"></script>
+{% endblock %}
+
+// {% set title="Index page" %}
+
+{% block content %}
+ 
+<div class="container">
+
+    <h2>Hello, this is chat app, classic node.js developer pet-project.</h2>
+    <h3>Here you can try anonymous chat: </h3>
+
+    <div class="chat-app">
+        <div class="form-container" >
+            <span id="connection-status"></span>
+            <span id="connection-counter"></span>
+            <input type="text" name="username" id="username" placeholder="Choose a name! "></input>
+            <textarea name="message" id="message" placeholder="Enter a message..."></textarea>
+            <<!-- <button id="send">Send</button> -->>
+        </div>
+        <div class="chat-container">
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
