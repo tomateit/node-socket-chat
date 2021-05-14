@@ -1,34 +1,37 @@
-require('dotenv').config();
-const path = require('path');
-const express = require('express');
-const http = require('http');
-const socketIO = require('socket.io');
-const hbs = require('hbs');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
+require("dotenv").config();
+const path = require("path");
+const express = require("express");
+const http = require("http");
+const socketIO = require("socket.io");
+const nunjucks = require("nunjucks");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 const { mainPageChat } = require("./routes/rooms/mainpage");
 const { privateChat } = require("./routes/rooms/myspace");
 const publicRoutes = require("./routes/publicRoutes");
 
-const publicPath = path.join(__dirname, '../public');
+const publicPath = path.join(__dirname, "..", "public");
+const viewsPath = path.join(__dirname, "..", "views");
 const PORT = process.env.PORT || 3000;
 
 // Initializing express
 const app = express();
+
 // Express settings
-app.set('views', path.join(__dirname, "..","views"));
-app.set('view engine', 'hbs');
-hbs.registerPartials( path.join(__dirname,"..","views","partials"));
+app.set("views", viewsPath);
+nunjucks.configure("views", {
+    autoescape: true,
+    express: app
+});
+app.set("view engine", "html");
+
 // Express plugins
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(cookieParser())
+app.use(cookieParser());
 // Custom routes
 app.use(publicRoutes);
 
-app.use(express.static(publicPath));
-
+app.use("/static", express.static(publicPath));
 
 let server = http.createServer(app);
 // Initializing Socket.IO features
