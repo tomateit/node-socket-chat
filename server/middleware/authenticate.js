@@ -1,14 +1,12 @@
-const User = require("../models/User");
+// const User = require("../models/User");
 
 const authenticate = (req, res, next) => {
-    // if (!req.cookies.Auth) {
-    //     return next()
-    // }
-    // res.cookie("Auth", 100100)
-    
-    // const user = User.findByToken(req.cookies.Auth);
-    req.user = {username: req.cookies.Auth}
+
+    if (req.cookies.Auth) {
+        //TODO Decypher username from session
+        req.user = {username: req.cookies.Auth};
+    }
     return next();
-}
+};
 
 module.exports.authenticate = authenticate;
