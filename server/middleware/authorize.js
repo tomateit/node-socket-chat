@@ -3,6 +3,6 @@ const authorize = (req, res, next) => {
         return res.redirect("/");
     }
     next();
-}
+};
 
 module.exports.authorize = authorize;

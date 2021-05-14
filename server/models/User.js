@@ -7,8 +7,8 @@ User.findByToken = (token) => {
         username: "Dummy Bear",
         tokenContent: token,
         data: {}
-    }
+    };
 
-}
+};
 
 module.exports = User;

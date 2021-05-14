@@ -1,12 +1,12 @@
-const { generateMessage } = require('../../utils/message')
+const { generateMessage } = require("../../utils/message");
 
 // Socket.IO stuff: 
 
 // Temporary message buffer
-let messageBuffer = []
+let messageBuffer = [];
 function storeMessage (message) {
     while(messageBuffer.length > 10) {
-        messageBuffer.shift()
+        messageBuffer.shift();
     }
     messageBuffer.push(message);
 }
@@ -29,31 +29,31 @@ const mainPageChat = (io) => {
         // Sending chat history to user
         messageBuffer.forEach(message => {
             socket.emit("newMessage", message);
-        })
+        });
 
         // Recieving a message from user
         socket.on("createMessage", (newMessage, callback) => {
             // io.emit("newMessage", newMessage);
-            let message = generateMessage(newMessage.from, newMessage.text)
+            let message = generateMessage(newMessage.from, newMessage.text);
 
             storeMessage(message);
             socket.broadcast.emit("newMessage", message);
             console.log("Broadcasted new message: ", message);
             callback("Successfully delivered to server");
             // socket.emit("newMessage", newMessage)
-        })
-
-        // Handling the user disconnect
-        socket.on('disconnect', () => {
-            console.log("user was disconnected");
-            connectionCounter -= 1;
-            io.emit('userCount', connectionCounter);
         });
 
-    })
+        // Handling the user disconnect
+        socket.on("disconnect", () => {
+            console.log("user was disconnected");
+            connectionCounter -= 1;
+            io.emit("userCount", connectionCounter);
+        });
+
+    });
 
     return io;
 
-}
+};
 
 module.exports.mainPageChat = mainPageChat;

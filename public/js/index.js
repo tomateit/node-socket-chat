@@ -13,20 +13,20 @@ textpayloadInput.addEventListener("keypress", keyPressEventListener);
 
 socket.on("connect", function() {
     console.log("CONNECTED");
-    connectionStatus.innerHTML= "You are connected to server!"
-    connectionStatus.className = "green"
+    connectionStatus.innerHTML= "You are connected to server!";
+    connectionStatus.className = "green";
 });
 
 socket.on("disconnect", function() {
     console.log("DISCONNECT");
-    connectionStatus.innerHTML= "You are disconnected from server!"
-    connectionStatus.className = "red"
-    connectionCounter.innerHTML = "Nobody is online 4U."
+    connectionStatus.innerHTML= "You are disconnected from server!";
+    connectionStatus.className = "red";
+    connectionCounter.innerHTML = "Nobody is online 4U.";
 });
 
 socket.on("userCount", function(count) {
     console.log("User count update: ", count);
-    connectionCounter.innerHTML= `Active connections: ${count}`
+    connectionCounter.innerHTML= `Active connections: ${count}`;
 });
 
 socket.on("newMessage", function(message){
@@ -41,7 +41,7 @@ socket.on("newMessage", function(message){
 function keyPressEventListener(e) {
     var characterCode=e.keyCode || e.which;
     if(characterCode == 13){
-        sendMessageListener()
+        sendMessageListener();
     } else {
         return false;
     }
@@ -52,33 +52,33 @@ var sendMessageListener = function(event) {
     var from = usernameInput.value;
 
     if(!from) {
-        return alert("Please choose a name!")
+        return alert("Please choose a name!");
     }
     if (!text) {
-        return alert("Please enter a text!")
+        return alert("Please enter a text!");
     }
 
     var message = {
         from, 
         text
-    }
+    };
 
-    addMessageToTheScreen(message)
-    sendMessageToServer(message)   
-}
+    addMessageToTheScreen(message);
+    sendMessageToServer(message);   
+};
 
 function sendMessageToServer(message) {
     socket.emit("createMessage", message, (response) => {
-        console.log("delivered", response)
+        console.log("delivered", response);
         textpayloadInput.value = "";
     });
 }
 
 function addMessageToTheScreen(message) {
     var newMessage = document
-            .createElement("div")
-    newMessage.className = "message"
-    newMessage.innerHTML = `<span class="sender">${message.from} :</span><p class="messsage-text">${message.text}</p>`
+        .createElement("div");
+    newMessage.className = "message";
+    newMessage.innerHTML = `<span class="sender">${message.from} :</span><p class="messsage-text">${message.text}</p>`;
     document.getElementsByClassName("chat-container")[0].prepend(newMessage);
 }
 

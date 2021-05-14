@@ -62,7 +62,7 @@ textpayloadInput.addEventListener("keypress", keyPressEventListener);
 function keyPressEventListener(e) {
     var characterCode = e.keyCode || e.which;
     if (characterCode == 13) {
-        sendMessageListener()
+        sendMessageListener();
     } else {
         return false;
     }
@@ -73,33 +73,33 @@ var sendMessageListener = function (event) {
     var to = addresseeInput.value.trim();
 
     if (!to) {
-        return alert("Please choose a name!")
+        return alert("Please choose a name!");
     }
     if (!text) {
-        return alert("Please enter a text!")
+        return alert("Please enter a text!");
     }
 
     var message = {
         to,
         text
-    }
+    };
 
-    addMessageToTheScreen(message)
-    sendMessageToServer(message)
-}
+    addMessageToTheScreen(message);
+    sendMessageToServer(message);
+};
 
 function sendMessageToServer(message) {
     socket.emit("createMessage", message, (response) => {
-        console.log("delivered", response)
+        console.log("delivered", response);
         textpayloadInput.value = "";
     });
 }
 
 function addMessageToTheScreen(message) {
     var newMessage = document
-        .createElement("div")
-    newMessage.className = "message"
-    newMessage.innerHTML = `<span class="sender">${message.from} :</span><p class="messsage-text">${message.text}</p>`
+        .createElement("div");
+    newMessage.className = "message";
+    newMessage.innerHTML = `<span class="sender">${message.from} :</span><p class="messsage-text">${message.text}</p>`;
     document.getElementsByClassName("chat-container")[0].prepend(newMessage);
 }
 
