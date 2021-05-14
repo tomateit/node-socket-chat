@@ -1,16 +1,16 @@
 @font-face {
     font-family: Corona;
-    src: url(/fonts/CoronA.ttf);
+    src: url(/static/fonts/CoronA.ttf);
   }
 
 @font-face {
     font-family: Eroded;
-    src: url(/fonts/Ordeal-Eroded-FFP.ttf);
+    src: url(/static/fonts/Ordeal-Eroded-FFP.ttf);
   }
 
   @font-face {
     font-family: Ubuntu;
-    src: url(/fonts/Ubuntu-R.ttf);
+    src: url(/static/fonts/Ubuntu-R.ttf);
   }
 
 #logoimage {
