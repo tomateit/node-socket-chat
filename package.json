@@ -4,7 +4,7 @@
   "description": "My petproject - socket chat",
   "repository": {
     "type": "git",
-    "url": "git@github.com:fatclient/node-socket-chat.git"
+    "url": "git@github.com:tomateit/node-socket-chat.git"
   },
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   "engines": {
     "node": "11.0.0"
   },
-  "author": "fatclient",
+  "author": "Max Ermakov (maksim_ermakov@protonmail.com)",
   "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.4",
@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "expect": "^25.1.0",
-    "mocha": "^5.2.0",
+    "mocha": "^8.4.0",
     "nodemon": "^1.18.9"
   }
 }
